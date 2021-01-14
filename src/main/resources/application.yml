@@ -1,0 +1,16 @@
+server:
+  port: 8206
+spring:
+  profiles:
+    active: dev
+  application:
+    name: system
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848 #配置Nacos地址
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
