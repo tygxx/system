@@ -1,9 +1,10 @@
 package com.yy.system.api;
 
-/**
- * 枚举了一些常用API操作码
- * Created by macro on 2019/4/19.
- */
+/*
+ *@Description: 枚举了一些常用API操作码
+ *@ClassAuthor: tengYong
+ *@Date: 2021-01-15 13:26:31
+*/
 public enum ResultCode implements IErrorCode {
     SUCCESS(200, "操作成功"),
     FAILED(500, "操作失败"),

@@ -1,7 +1,8 @@
 package com.yy.system.ops.service;
 
-import com.yy.system.ops.entity.UmsAdmin;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.yy.system.ops.dto.UmsAdminParam;
+import com.yy.system.ops.entity.UmsAdmin;
 
 /**
  * <p>
@@ -12,5 +13,10 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2021-01-14
  */
 public interface IUmsAdminService extends IService<UmsAdmin> {
+
+     /**
+     * 注册功能
+     */
+    UmsAdmin register(UmsAdminParam umsAdminParam);
 
 }

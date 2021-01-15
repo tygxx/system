@@ -1,5 +1,10 @@
 package com.yy.system.api;
 
+/*
+ *@Description: 统一返回结果
+ *@ClassAuthor: tengYong
+ *@Date: 2021-01-15 13:27:14
+*/
 public class CommonResult<T> {
     private long code;
     private String message;

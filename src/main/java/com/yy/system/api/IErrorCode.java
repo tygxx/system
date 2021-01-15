@@ -1,9 +1,10 @@
 package com.yy.system.api;
 
-/**
- * 封装API的错误码
- * Created by macro on 2019/4/19.
- */
+/*
+ *@Description: 封装API的错误码
+ *@ClassAuthor: tengYong
+ *@Date: 2021-01-15 13:26:22
+*/
 public interface IErrorCode {
     long getCode();
 
