@@ -31,6 +31,13 @@ import org.springframework.util.StringUtils;
  *@Date: 2021-01-14 14:08:37
 */
 public class CodeGenerator {
+
+    private static final String mysql_ip = "192.168.205.232";
+    private static final String mysql_port = "13306";
+    private static final String mysql_database = "mall";
+    private static final String mysql_username = "root";
+    private static final String mysql_pwd = "eversec123098";
+
     /**
      * <p>
      * 读取控制台内容
@@ -60,14 +67,14 @@ public class CodeGenerator {
         gc.setOutputDir(projectPath + "/src/main/java");
         gc.setAuthor("tengyong");
         // gc.setOpen(false);
-        gc.setFileOverride(true); //是否覆盖
+        gc.setFileOverride(true); // 是否覆盖
         // gc.setSwagger2(true); 实体属性 Swagger2 注解
         gc.setActiveRecord(false);// 不需要ActiveRecord特性的请改为false
         gc.setEnableCache(false);// XML 二级缓存
         gc.setBaseResultMap(true);// XML ResultMap
         gc.setBaseColumnList(false);// XML columList
         // 将表的datetime能映射到实体中是dateTime，否则会映射成LocalDateTime
-        gc.setDateType(DateType.ONLY_DATE); 
+        gc.setDateType(DateType.ONLY_DATE);
 
         // 自定义文件命名，注意 %s 会自动填充表实体属性！
         // gc.setMapperName("%sDao");
@@ -79,11 +86,12 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/mall?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai");
+        dsc.setUrl("jdbc:mysql://" + mysql_ip + ":" + mysql_port + "/" + mysql_database
+                + "?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("123456");
+        dsc.setUsername(mysql_username);
+        dsc.setPassword(mysql_pwd);
         mpg.setDataSource(dsc);
 
         // 包配置
@@ -151,15 +159,15 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         // 表名生成策略
         strategy.setNaming(NamingStrategy.underline_to_camel);
-        //列名规则
+        // 列名规则
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-        //是否生成lombok注解
+        // 是否生成lombok注解
         strategy.setEntityLombokModel(true);
-        //开启驼峰命名
+        // 开启驼峰命名
         strategy.setRestControllerStyle(true);
-        //自动填充的配置
-        TableFill createTime = new TableFill("create_time", FieldFill.INSERT);//设置时的生成策略
-        TableFill updateTime = new TableFill("update_time", FieldFill.INSERT_UPDATE);//设置更新时间的生成策略
+        // 自动填充的配置
+        TableFill createTime = new TableFill("create_time", FieldFill.INSERT);// 设置时的生成策略
+        TableFill updateTime = new TableFill("update_time", FieldFill.INSERT_UPDATE);// 设置更新时间的生成策略
         ArrayList<TableFill> list = new ArrayList<>();
         list.add(createTime);
         list.add(updateTime);

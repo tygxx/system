@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.3.0.RELEASE</version>
-        <relativePath/>
+        <relativePath />
         <!-- lookup parent from repository -->
     </parent>
     <groupId>com.yy</groupId>
@@ -41,6 +38,10 @@
         <jakarta.validation.version>2.0.2</jakarta.validation.version>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
         <hutool.version>4.5.7</hutool.version>
+        <!-- 统一日志收集用 -->
+        <logstash-logback.version>5.3</logstash-logback.version>
+        <spring-boot-redis.version>2.2.1.RELEASE</spring-boot-redis.version>
+
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -173,6 +174,18 @@
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
+        </dependency>
+
+        <!--集成logstash-->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>${spring-boot-redis.version}</version>
         </dependency>
     </dependencies>
     <build>

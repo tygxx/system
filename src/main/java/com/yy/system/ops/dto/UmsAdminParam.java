@@ -3,13 +3,17 @@ package com.yy.system.ops.dto;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@ApiModel
 public class UmsAdminParam {
+    @ApiModelProperty(value = "用户id,修改时需要")
+    private Long id;
     @ApiModelProperty(value = "用户名", required = true)
     @NotEmpty(message = "用户名不能为空")
     private String username;
