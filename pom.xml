@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -8,11 +9,13 @@
         <relativePath />
         <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.yy</groupId>
     <artifactId>system</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>system</name>
     <description>Demo project for Spring Boot</description>
+
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud.version>Hoxton.SR5</spring-cloud.version>
@@ -38,14 +41,16 @@
         <jakarta.validation.version>2.0.2</jakarta.validation.version>
         <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
         <hutool.version>4.5.7</hutool.version>
+        <!-- API文档生产工具 -->
+        <knife4j.version>2.0.4</knife4j.version>
         <!-- 统一日志收集用 -->
         <logstash-logback.version>5.3</logstash-logback.version>
         <spring-boot-redis.version>2.2.1.RELEASE</spring-boot-redis.version>
-
     </properties>
+
     <dependencyManagement>
         <dependencies>
-            <!-- 使用Spring Cloud Alibaba 的组件 -->
+            <!-- 指定Spring Cloud Alibaba 版本 -->
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>
@@ -53,6 +58,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- 指定springCloud版本 -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -62,24 +68,40 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
     <dependencies>
-        <!--SpringBoot通用依赖模块-->
+        <!--支持全栈式Web开发，包括Tomcat和spring-webmvc -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+        <!-- 增加了面向产品上线相关的功能，比如测量和监控 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
+        <!-- 支持面向方面的编程即AOP，包括spring-aop和AspectJ -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
+        <!-- 支持常规的测试依赖，包括JUnit、Hamcrest、Mockito以及spring-test模块 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <!-- 它的作用是，只能在test目录下的类中导入（即import xxx）依赖中的内容 -->
             <scope>test</scope>
+        </dependency>
+        <!-- 分页插件 -->
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
+            <version>${pagehelper.version}</version>
+        </dependency>
+        <!-- 支持Redis键值存储数据库，包括spring-redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
         <!--集成druid连接池-->
         <dependency>
@@ -98,12 +120,6 @@
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatis-plus.version}</version>
-        </dependency>
-        <!--MyBatis分页插件-->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>${pagehelper.version}</version>
         </dependency>
         <!-- 添加 代码生成器 依赖 -->
         <dependency>
@@ -130,12 +146,6 @@
             <artifactId>beetl</artifactId>
             <version>${mybatis-plus-beetl.version}</version>
         </dependency>
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
         <!-- nacos注册发现 -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -157,6 +167,12 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${swagger-ui.version}</version>
         </dependency>
+        <!--集成logstash-->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback.version}</version>
+        </dependency>
         <!-- 请求参数校验，需要以下两个依赖才能好使 -->
         <dependency>
             <groupId>jakarta.validation</groupId>
@@ -168,24 +184,17 @@
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
-
+        <!-- lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
         <!--Hutool Java工具包-->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>${hutool.version}</version>
-        </dependency>
-
-        <!--集成logstash-->
-        <dependency>
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
-            <version>${logstash-logback.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>${spring-boot-redis.version}</version>
         </dependency>
     </dependencies>
     <build>
@@ -202,9 +211,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <!-- 指定maven编译的jdk版本,如果不指定,maven3默认用jdk 1.5 maven2默认用jdk1.3 -->
                 <configuration>
-                    <source>8</source>
-                    <target>8</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
