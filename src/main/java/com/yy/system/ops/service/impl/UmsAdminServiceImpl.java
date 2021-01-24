@@ -327,7 +327,7 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
 
     @Override
     public void setStatus(Long id, Integer status) {
-        LambdaUpdateWrapper updateWrapper = Wrappers.lambdaUpdate(UmsAdmin.class).eq(UmsAdmin::getId, id)
+        LambdaUpdateWrapper<UmsAdmin> updateWrapper = Wrappers.lambdaUpdate(UmsAdmin.class).eq(UmsAdmin::getId, id)
                 .set(UmsAdmin::getStatus, status);
         adminMapper.update(null, updateWrapper);
     }
