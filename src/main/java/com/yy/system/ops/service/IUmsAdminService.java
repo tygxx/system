@@ -3,7 +3,7 @@ package com.yy.system.ops.service;
 import java.util.List;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.yy.system.api.CommonResult;
+import com.yy.common.api.CommonResult;
 import com.yy.system.ops.dto.UmsAdminCondition;
 import com.yy.system.ops.dto.UmsAdminParam;
 import com.yy.system.ops.dto.UpdateAdminPasswordParam;

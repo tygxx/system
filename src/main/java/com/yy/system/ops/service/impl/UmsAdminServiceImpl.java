@@ -16,10 +16,11 @@ import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
-import com.yy.system.api.CommonResult;
-import com.yy.system.api.ResultCode;
-import com.yy.system.constant.AuthConstant;
-import com.yy.system.exception.Asserts;
+import com.yy.common.api.CommonResult;
+import com.yy.common.api.ResultCode;
+import com.yy.common.constant.AuthConstant;
+import com.yy.common.exception.Asserts;
+import com.yy.system.feign.AuthService;
 import com.yy.system.ops.dto.UmsAdminCondition;
 import com.yy.system.ops.dto.UmsAdminParam;
 import com.yy.system.ops.dto.UpdateAdminPasswordParam;
@@ -85,6 +86,9 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
     private UmsAdminCacheService adminCacheService;
 
     @Autowired
+    private AuthService authService;
+
+    @Autowired
     private HttpServletRequest request;
 
     private Wrapper<UmsAdmin> getQueryWrapper(UmsAdminCondition condition) {
@@ -146,14 +150,11 @@ public class UmsAdminServiceImpl extends ServiceImpl<UmsAdminMapper, UmsAdmin> i
         params.put("grant_type", "password");
         params.put("username", username);
         params.put("password", password);
-        // CommonResult restResult = authService.getAccessToken(params);
-        // if (ResultCode.SUCCESS.getCode() == restResult.getCode() &&
-        // restResult.getData() != null) {
-        // // updateLoginTimeByUsername(username);
-        // insertLoginLog(username);
-        // }
-        insertLoginLog(username);
-        return null;
+        CommonResult restResult = authService.getAccessToken(params);
+        if (ResultCode.SUCCESS.getCode() == restResult.getCode() && restResult.getData() != null) {
+            insertLoginLog(username);
+        }
+        return restResult;
     }
 
     /**

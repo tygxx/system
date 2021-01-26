@@ -1,6 +1,6 @@
 package com.yy.system.component;
 
-import com.yy.system.api.CommonResult;
+import com.yy.common.api.CommonResult;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

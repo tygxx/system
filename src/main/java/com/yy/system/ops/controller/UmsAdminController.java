@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.yy.system.api.CommonPage;
-import com.yy.system.api.CommonResult;
+import com.yy.common.api.CommonPage;
+import com.yy.common.api.CommonResult;
 import com.yy.system.ops.dto.UmsAdminCondition;
 import com.yy.system.ops.dto.UmsAdminLoginParam;
 import com.yy.system.ops.dto.UmsAdminParam;

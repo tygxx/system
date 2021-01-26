@@ -1,6 +1,6 @@
 package com.yy.system.ops.dto;
 
-import com.yy.system.api.QueryCondition;
+import com.yy.common.dto.QueryCondition;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

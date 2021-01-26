@@ -24,8 +24,6 @@
         <druid.version>1.1.10</druid.version>
         <mysql-connector.version>8.0.16</mysql-connector.version>
         <mybatis-plus.version>3.0.7.1</mybatis-plus.version>
-        <!-- 分页插件版本 -->
-        <pagehelper.version>5.1.8</pagehelper.version>
         <!-- mybatis-plus代码生成器 -->
         <mybatis-plus-generator.version>3.4.1</mybatis-plus-generator.version>
         <!-- mybatis-plus代码生成器，模板引擎 -->
@@ -34,18 +32,6 @@
         <mybatis-plus-freemarker.version>2.3.30</mybatis-plus-freemarker.version>
         <!-- mybatis-plus代码生成器，模板引擎 -->
         <mybatis-plus-beetl.version>3.3.2.RELEASE</mybatis-plus-beetl.version>
-        <lombok.version>1.16.16</lombok.version>
-        <swagger2.version>2.7.0</swagger2.version>
-        <swagger-ui.version>2.7.0</swagger-ui.version>
-        <!-- 可以用注解校验请求参数,需要以下两个依赖才能好使，如：@NotEmpty、@Email -->
-        <jakarta.validation.version>2.0.2</jakarta.validation.version>
-        <hibernate-validator.version>6.0.13.Final</hibernate-validator.version>
-        <hutool.version>4.5.7</hutool.version>
-        <!-- API文档生产工具 -->
-        <knife4j.version>2.0.4</knife4j.version>
-        <!-- 统一日志收集用 -->
-        <logstash-logback.version>5.3</logstash-logback.version>
-        <spring-boot-redis.version>2.2.1.RELEASE</spring-boot-redis.version>
     </properties>
 
     <dependencyManagement>
@@ -70,38 +56,11 @@
     </dependencyManagement>
 
     <dependencies>
-        <!--支持全栈式Web开发，包括Tomcat和spring-webmvc -->
+        <!-- common通用工程 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!-- 增加了面向产品上线相关的功能，比如测量和监控 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <!-- 支持面向方面的编程即AOP，包括spring-aop和AspectJ -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-        </dependency>
-        <!-- 支持常规的测试依赖，包括JUnit、Hamcrest、Mockito以及spring-test模块 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <!-- 它的作用是，只能在test目录下的类中导入（即import xxx）依赖中的内容 -->
-            <scope>test</scope>
-        </dependency>
-        <!-- 分页插件 -->
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-            <version>${pagehelper.version}</version>
-        </dependency>
-        <!-- 支持Redis键值存储数据库，包括spring-redis -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <groupId>com.yy.common</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!--集成druid连接池-->
         <dependency>
@@ -156,55 +115,6 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
-        <!--Swagger-UI API文档生产工具-->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${swagger2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger-ui.version}</version>
-        </dependency>
-        <!--集成logstash-->
-        <dependency>
-            <groupId>net.logstash.logback</groupId>
-            <artifactId>logstash-logback-encoder</artifactId>
-            <version>${logstash-logback.version}</version>
-        </dependency>
-        <!-- 请求参数校验，需要以下两个依赖才能好使 -->
-        <dependency>
-            <groupId>jakarta.validation</groupId>
-            <artifactId>jakarta.validation-api</artifactId>
-            <version>${jakarta.validation.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>
-        <!-- lombok -->
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
-        </dependency>
-        <!--Hutool Java工具包-->
-        <dependency>
-            <groupId>cn.hutool</groupId>
-            <artifactId>hutool-all</artifactId>
-            <version>${hutool.version}</version>
-        </dependency>
-        <!-- 微服务间调用 -->
-         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-        <!-- <dependency>
-            <groupId>io.github.openfeign</groupId>
-            <artifactId>feign-okhttp</artifactId>
-        </dependency> -->
     </dependencies>
     <build>
         <plugins>

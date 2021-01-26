@@ -1,7 +1,7 @@
 package com.yy.system.ops.service.impl;
 
+import com.yy.common.service.RedisService;
 import com.yy.system.ops.entity.UmsAdmin;
-import com.yy.system.ops.service.RedisService;
 import com.yy.system.ops.service.UmsAdminCacheService;
 
 import org.springframework.beans.factory.annotation.Autowired;

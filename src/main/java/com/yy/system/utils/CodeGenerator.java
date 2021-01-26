@@ -32,11 +32,11 @@ import org.springframework.util.StringUtils;
 */
 public class CodeGenerator {
 
-    private static final String mysql_ip = "192.168.205.232";
-    private static final String mysql_port = "13306";
-    private static final String mysql_database = "mall";
-    private static final String mysql_username = "root";
-    private static final String mysql_pwd = "eversec123098";
+    private static final String MYSQL_IP = "192.168.205.232";
+    private static final String MYSQL_PORT = "13306";
+    private static final String MYSQL_DATABASE = "mall";
+    private static final String MYSQL_USERNAME = "root";
+    private static final String MYSQL_PWD = "eversec123098";
 
     /**
      * <p>
@@ -51,9 +51,11 @@ public class CodeGenerator {
         if (scanner.hasNext()) {
             String ipt = scanner.next();
             if (!StringUtils.isEmpty(ipt)) {
+                scanner.close();
                 return ipt;
             }
         }
+        scanner.close();
         throw new MybatisPlusException("请输入正确的" + tip + "！");
     }
 
@@ -86,12 +88,12 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://" + mysql_ip + ":" + mysql_port + "/" + mysql_database
+        dsc.setUrl("jdbc:mysql://" + MYSQL_IP + ":" + MYSQL_PORT + "/" + MYSQL_DATABASE
                 + "?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUsername(mysql_username);
-        dsc.setPassword(mysql_pwd);
+        dsc.setUsername(MYSQL_USERNAME);
+        dsc.setPassword(MYSQL_PWD);
         mpg.setDataSource(dsc);
 
         // 包配置
