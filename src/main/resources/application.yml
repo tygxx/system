@@ -30,6 +30,15 @@ mybatis:
   mapper-locations:
     - classpath:mapper/*/*.xml
 
+management: #开启SpringBoot Admin的监控
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
 # redis缓存配置
 redis:
   database: mall
@@ -50,6 +59,11 @@ logstash:
 feign: 
   okhttp:
     enabled: true  #feign使用okhttp去调用微服务
+  client:
+    config:
+      default:
+        connect-timeout: 20000
+        read-timeout: 20000
 
 ribbon:
   ConnectTimeout: 3000 #服务请求连接超时时间（毫秒）
