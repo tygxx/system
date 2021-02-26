@@ -1,12 +1,13 @@
 server:
   port: 9001
+  address: 0.0.0.0
 spring:
   application:
     name: system
   datasource:
-    url: jdbc:mysql://192.168.205.232:13306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: eversec123098
+    url: ${DATASOURCE_URL:jdbc:mysql://192.168.205.232:13306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai}
+    username: ${DATASOURCE_USERNAME:root}
+    password: ${DATASOURCE_PASSWORD:eversec123098}
     druid:
       initial-size: 5 #连接池初始化大小
       min-idle: 10 #最小空闲连接数
@@ -16,18 +17,25 @@ spring:
       stat-view-servlet: #访问监控网页的登录用户名和密码
         login-username: druid
         login-password: druid
+#   cloud:
+#     nacos:
+#       discovery:
+#         server-addr: ${NACOS_SERVERADDR:http://192.168.205.232:8848}
+#       config:
+#         server-addr: ${NACOS_SERVERADDR:http://192.168.205.232:8848}
+#         file-extension: yaml
   redis:
-    host: 192.168.205.232 # Redis服务器地址
-    database: 0 # Redis数据库索引（默认为0）
-    port: 16379 # Redis服务器连接端口
-    password: eversec123!@#  # Redis服务器连接密码（默认为空）
+    host: ${REDIS_HOST:192.168.205.232} # Redis服务器地址
+    database: ${REDIS_DATABASE:0} # Redis数据库索引（默认为0）
+    port: ${REDIS_PORT:16379} # Redis服务器连接端口
+    password: ${REDIS_PASSWORD:eversec123!@#}  # Redis服务器连接密码（默认为空）
     timeout: 3000ms # 连接超时时间（毫秒）
   servlet:
     multipart:
       enabled: true #开启文件上传
       max-file-size: 10MB #限制文件上传大小为10M
-mybatis:
-  mapper-locations:
+mybatis-plus:
+  mapperLocations:
     - classpath:mapper/*/*.xml
 
 management: #开启SpringBoot Admin的监控
@@ -54,7 +62,7 @@ logging:
 
 # LogStash访问,elk日志收集
 logstash:
-  host: 192.168.205.232
+  host: ${LOGSTASH_HOST:192.168.205.232}
 
 feign: 
   okhttp:

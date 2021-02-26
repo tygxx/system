@@ -1,5 +1,10 @@
+# 使用nacos需要bootstrap配置文件，该文件优先于application文件加载
+# docker启动system镜像,不在这里配置nacos相关地址(application配置),会一直以localhost:8848去找nacos(配置正确的情况下)
 spring:
-  profiles:
-    active: dev
-  application:
-    name: system
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${NACOS_SERVERADDR:http://192.168.205.232:8848}
+      config:
+        server-addr: ${NACOS_SERVERADDR:http://192.168.205.232:8848}
+        file-extension: yaml
