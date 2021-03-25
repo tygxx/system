@@ -2,8 +2,8 @@ server:
   port: 9001
   address: 0.0.0.0
 spring:
-  application:
-    name: system
+#   application:
+#     name: system
   datasource:
     url: ${DATASOURCE_URL:jdbc:mysql://192.168.205.232:13306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai}
     username: ${DATASOURCE_USERNAME:root}
@@ -64,7 +64,9 @@ logging:
 logstash:
   host: ${LOGSTASH_HOST:192.168.205.232}
 
-feign: 
+feign:
+  hystrix:
+    enabled: true # 开启断路器 
   okhttp:
     enabled: true  #feign使用okhttp去调用微服务
   client:
