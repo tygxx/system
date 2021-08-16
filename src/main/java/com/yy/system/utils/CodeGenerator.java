@@ -26,7 +26,7 @@ import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import org.springframework.util.StringUtils;
 
 /*
- *@Description: mybatis-plus 代码生成器，根据表字段生成相关代码
+ *@Description: mybatis-plus 代码生成器，根据表字段生成相关代  码
  *@ClassAuthor: tengYong
  *@Date: 2021-01-14 14:08:37
 */
