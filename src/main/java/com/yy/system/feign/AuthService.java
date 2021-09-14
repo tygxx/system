@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /*
- *@Description: 认证服务远程调用
+ *@Description: 认证服务远程调用-认证修改测试
  *@ClassAuthor: tengYong
  *@Date: 2021-01-26 18:36:10
 */
